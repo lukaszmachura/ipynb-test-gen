@@ -1,2 +1,2 @@
 # ipynb-test-gen
-Generator plikow ipynb na kolokwia/egzaminy
+Generator plików *.ipynb na kolokwia/egzaminy WdP, AiP, PP, P...
