@@ -92,9 +92,10 @@ def replace_problems(service, spreadsheet_id,
                     p = problems[student_number % len(problems)][0]
                     p = p.replace("\\", "\\\\")
                     newline += p
-                    newline += '\\n"'
-                    if line[-1] == ",":
-                        newline += ","
+                    if "," in line[-2:]:
+                        newline += '\\n",'
+                    else:
+                        newline += '\\n"'
                     newline += '\n'
                     handle.write(newline)
                 else:
@@ -133,5 +134,12 @@ if __name__ == '__main__':
                      problem_range,
                      replace_line)
 
-    z3_range = 'z3!A1:A'
+    problem_range = 'z3!A1:A'
+    replace_line = 88
+    replace_problems(service,
+                     spreadsheet_id,
+                     all_locations,
+                     problem_range,
+                     replace_line)
+
     z4_range = 'z4!A1:A'
