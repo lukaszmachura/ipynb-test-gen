@@ -91,7 +91,10 @@ def replace_problems(service,
             for i, line in enumerate(content):
                 if i == replace_line - 1:
                     newline = " " * 4 + '"'
-                    newline += problems[student_number % len(problems)][0]
+                    # if \ exists, mask it with \\
+                    p = problems[student_number % len(problems)][0]
+                    p = p.replace("\\", "\\\\")
+                    newline += p
                     newline += '\\n"'
                     if line[-1] == ",":
                         newline += ","
@@ -118,20 +121,20 @@ if __name__ == '__main__':
 
     # replace individual tasks
     problem_range = 'z1!A1:A'
-    for replace_line in [37]:
-        replace_problems(service,
-                         spreadsheet_id,
-                         all_locations,
-                         problem_range,
-                         replace_line)
+    replace_line = 37
+    replace_problems(service,
+                     spreadsheet_id,
+                     all_locations,
+                     problem_range,
+                     replace_line)
 
     problem_range = 'z2!A1:A'
-    for replace_line in [63]:
-        replace_problems(service,
-                         spreadsheet_id,
-                         all_locations,
-                         problem_range,
-                         replace_line)
+    replace_line = 63
+    replace_problems(service,
+                     spreadsheet_id,
+                     all_locations,
+                     problem_range,
+                     replace_line)
 
     z3_range = 'z3!A1:A'
     z4_range = 'z4!A1:A'
