@@ -77,11 +77,8 @@ def create_individual_files(service, spreadsheet_id, exam, names_range):
     return all_locations
 
 
-def replace_problems(service,
-                     spreadsheet_id,
-                     all_locations,
-                     prange,
-                     replace_line):
+def replace_problems(service, spreadsheet_id,
+                     all_locations, prange, replace_line):
     problems = get_sheet_range(service, spreadsheet_id, prange)
     assert problems, 'No data found.'
     for student_number, file in enumerate(all_locations):
