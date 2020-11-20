@@ -1,4 +1,6 @@
 *.ipynb
+!exam01.ipynb
+
 files
 files/*
 *.json
