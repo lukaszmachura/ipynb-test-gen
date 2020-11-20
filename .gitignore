@@ -3,3 +3,6 @@ files
 files/*
 *.json
 *.pickle
+
+__pycache__
+__pycache__/*
