@@ -8,3 +8,6 @@ files/*
 
 __pycache__
 __pycache__/*
+
+# actual working scripts
+kc20*
