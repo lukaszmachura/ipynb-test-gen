@@ -16,7 +16,7 @@ all_locations = create_individual_files(service, spreadsheet_id,
 
 # replace individual tasks
 problem_range = 'z1!A1:A'
-replace_line = 37
+replace_line = 100
 replace_problems(service,
                  spreadsheet_id,
                  all_locations,
@@ -24,7 +24,7 @@ replace_problems(service,
                  replace_line)
 
 problem_range = 'z2!A1:A'
-replace_line = 63
+replace_line = 126
 replace_problems(service,
                  spreadsheet_id,
                  all_locations,
@@ -32,11 +32,17 @@ replace_problems(service,
                  replace_line)
 
 problem_range = 'z3!A1:A'
-replace_line = 88
+replace_line = 151
 replace_problems(service,
                  spreadsheet_id,
                  all_locations,
                  problem_range,
                  replace_line)
 
-z4_range = 'z4!A1:A'
+problem_range = 'z4!A1:A'
+replace_line = 184
+replace_problems(service,
+                 spreadsheet_id,
+                 all_locations,
+                 problem_range,
+                 replace_line)
