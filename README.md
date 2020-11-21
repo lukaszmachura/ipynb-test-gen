@@ -24,7 +24,7 @@ service = connect_to_service()
 spreadsheet_id = '17T0Nnea1gwaAUyM7Sy2awiXyti7_2P_uOjbP8bOJxmo'
 ```
 
-4. Provide exam name. Directory with such a name will be created, if doesn't exists.
+4. Provide exam name. Directory with such a name will be created (if doesn't exists). In this dir all new, personalised files will be stored. Also - the pattern file with exam suppose to have the same name (here: `exam01.ipynb`) and be located in the working dir.
 ```
 exam = 'exam01'
 ```
