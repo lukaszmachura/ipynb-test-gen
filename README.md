@@ -2,19 +2,19 @@
 Generator plików *.ipynb na kolokwia/egzaminy WdP, AiP, PP, P...
 
 ## Requirements
-1. Google Sheets API for Python. Basically follow [this guide](https://developers.google.com/sheets/api/quickstart/python)
+1. Google Sheets API for Python. Basically follow [this guide](https://developers.google.com/sheets/api/quickstart/python).
 
-2. Google sheet, with the structure similar to the [example provided](https://docs.google.com/spreadsheets/d/17T0Nnea1gwaAUyM7Sy2awiXyti7_2P_uOjbP8bOJxmo/edit?usp=sharing)
+2. Google sheet, with the structure similar to the [example provided](https://docs.google.com/spreadsheets/d/17T0Nnea1gwaAUyM7Sy2awiXyti7_2P_uOjbP8bOJxmo/edit?usp=sharing).
 
 3. Source `exam01.ipynb` file with tasks patterns.
 
 ## How to setup the script
-1. import functions
+1. Import functions.
 ```
 from ipytest import *
 ```
 
-2. get service handle
+2. Get the service handle.
 ```
 service = connect_to_service()
 ```
@@ -29,14 +29,14 @@ spreadsheet_id = '17T0Nnea1gwaAUyM7Sy2awiXyti7_2P_uOjbP8bOJxmo'
 exam = 'exam01'
 ```
 
-5. Copy pattern file to individual files
+5. Copy pattern file to individual files.
 ```
 names_range = 'names!A1:B'
 all_locations = create_individual_files(service, spreadsheet_id,
                                         exam, names_range)
 ```
 
-3. In original, source *ipynb file locate the line (`replace_line`) for certain task (`t1`) which you have to replace as well as find and provide range with data from sheet (`problem_range`)
+3. In original, source *ipynb file locate the line (`replace_line`) for certain task (`t1`) which you have to replace as well as find and provide range with data from sheet (`problem_range`).
 
 ```
 # replace individual tasks
