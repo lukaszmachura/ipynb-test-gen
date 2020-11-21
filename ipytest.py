@@ -68,10 +68,11 @@ def create_individual_files(service, spreadsheet_id, exam, names_range):
     all_locations = []
     for idx, row in enumerate(names_groups):
         name= row[0]
-        destination_file = exam + "_" + name.replace(" ", "_")
+        destination_file = exam
         if len(row) > 1:
             group = row[1]
             destination_file += "_" + group.replace(" ", "_")
+        destination_file += "_" + name.replace(" ", "_")
         destination_file += '.ipynb'
         destination_loc = os.path.join(exam, destination_file)
         shutil.copyfile(source_file, destination_loc)
