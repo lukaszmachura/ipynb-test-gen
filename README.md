@@ -8,7 +8,7 @@ Generator plików *.ipynb na kolokwia/egzaminy WdP, AiP, PP, P...
 
 3. Source `exam01.ipynb` file with tasks patterns.
 
-## How to setup the script [`exam01.py`].(https://github.com/lukaszmachura/ipynb-test-gen/blob/main/exam01.py)
+## How to setup the script [`exam01.py`](https://github.com/lukaszmachura/ipynb-test-gen/blob/main/exam01.py)
 1. Import functions.
 ```
 from ipytest import *
