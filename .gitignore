@@ -12,3 +12,6 @@ __pycache__/*
 # actual working scripts
 kc20*
 IS20*
+
+# virtual env
+venv

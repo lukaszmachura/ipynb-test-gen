@@ -7,10 +7,12 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 
-def connect_to_service():
+def connect_to_service(org='usedupl'):
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
+    if not org:
+        org = '_' + org
 
     # If modifying these scopes, delete the file token.pickle.
     SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
@@ -28,7 +30,7 @@ def connect_to_service():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
+                f'credentials{org}.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
