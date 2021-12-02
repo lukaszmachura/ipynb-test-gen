@@ -10,8 +10,10 @@ __pycache__
 __pycache__/*
 
 # actual working scripts
-kc20*
-IS20*
+kc*
+KC*
+IS*
+is*
 
 # virtual env
 venv
