@@ -49,38 +49,21 @@ def get_sheet_range(service, spreadsheetId, range):
     return values
 
 
-def create_dir(name):
-    try:
-        p = os.path.join(".", name)
-        os.mkdir(p)
-    except OSError as error:
-        print(error)
-
-
-def create_individual_files(service, spreadsheet_id, exam, names_range):
-    # create directory
-    create_dir(exam)
-
-    # all names and groups
-    names_groups = get_sheet_range(service, spreadsheet_id, names_range)
-    assert names_groups, 'No data found.'
-
-    # copy files
-    source_file = exam + '.ipynb'
-    all_locations = []
-    for idx, row in enumerate(names_groups):
-        name= row[0]
-        destination_file = exam
-        if len(row) > 1:
-            group = row[1]
-            destination_file += "_" + group.replace(" ", "_")
-        destination_file += "_" + name.replace(" ", "_")
-        destination_file += '.ipynb'
-        destination_loc = os.path.join(exam, destination_file)
-        shutil.copyfile(source_file, destination_loc)
-        all_locations.append(destination_loc)
-
-    return all_locations
+def create_dir(name, subfolders=None):
+    if subfolders:
+        for s in subfolders:
+            try:
+                d = os.path.join(".", name, s)
+                os.makedirs(d)
+                print(d, 'created')
+            except OSError as e:
+                print(e)
+    else:
+        try:
+            p = os.path.join(".", name)
+            os.mkdir(p)
+        except OSError as error:
+            print(error)
 
 
 def replace_problems(service, spreadsheet_id,
@@ -108,6 +91,38 @@ def replace_problems(service, spreadsheet_id,
                 else:
                     handle.write(line)
 
+
+def create_individual_files(service, spreadsheet_id, exam, names_range, subfolders=False):
+    # all names and groups
+    names_groups = get_sheet_range(service, spreadsheet_id, names_range)
+    assert names_groups, 'No data found.'
+
+    # create directory
+    if subfolders:
+        groups = set(map(lambda x: x[1], names_groups))
+        create_dir(exam, subfolders=groups)
+    else:
+        create_dir(exam)
+
+    # copy files
+    source_file = exam + '.ipynb'
+    all_locations = []
+    for idx, row in enumerate(names_groups):
+        name= row[0]
+        destination_file = exam
+        if len(row) > 1:
+            group = row[1]
+            destination_file += "_" + group.replace(" ", "_")
+        destination_file += "_" + name.replace(" ", "_")
+        destination_file += '.ipynb'
+        if subfolders:
+            destination_loc = os.path.join(exam, group, destination_file)
+        else:
+            destination_loc = os.path.join(exam, destination_file)
+        shutil.copyfile(source_file, destination_loc)
+        all_locations.append(destination_loc)
+
+    return all_locations
 
 if __name__ == '__main__':
     print("ipytest module")
