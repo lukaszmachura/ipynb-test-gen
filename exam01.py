@@ -1,5 +1,5 @@
 from ipytest import *
-import sys
+import sys, os
 
 # get service handle
 service = connect_to_service()
@@ -11,7 +11,7 @@ spreadsheet_id = '17T0Nnea1gwaAUyM7Sy2awiXyti7_2P_uOjbP8bOJxmo'
 exam = ''
 if not exam:
     # take the exam name from the conf file (=this file)
-    exam = sys.argv[0].split('/')[-1].strip('.py')
+    exam = os.path.basename(sys.argv[0]).strip('.py')
 
 # copy pattern file to individual files
 names_range = 'names!A1:B'
